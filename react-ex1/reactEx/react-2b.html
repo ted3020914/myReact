@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>使用資料驅動</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <script src="../javascripts/vendor.js"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+    integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="bg-lighter">
+  <div class="container main my-5">
+    <div class="row">
+      <main class="col post">
+        <!-- 章節標題 -->
+        <div class="mb-4">
+          <h1 class="mt-0 text-muted">使用資料驅動-資料抽離</h1><small>檔名：<code>react-2b.html</code></small>
+        </div>
+
+        <!-- template：https://getbootstrap.com/docs/5.2/components/card/ -->
+
+        <!-- 練習開始 -->
+        <div id="root"></div>
+        <!-- 撰寫JSX -->
+        <script type="text/babel">
+          function App() {
+            // 建立資料物件
+            const data = {
+              imgUrl: 'https://images.unsplash.com/photo-1723754166148-2ceb2d84890f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              title: '花',
+              content: "花，書，窗，桌子",
+              btnLink:'https://unsplash.com/photos/a-vase-filled-with-white-flowers-sitting-on-top-of-a-table-FRZBiNg3-Es',
+              btnTitle:'查看圖片來源'
+            }
+            return <>
+              {/*元件中的註解要加大括號 */}
+              <div className="card mb-3">
+                <img src={data.imgUrl} className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h5 className="card-title">{data.title}</h5>
+                  <p className="card-text">{data.content}</p>
+                  <a href={data.btnLink} className="btn btn-primary">{data.btnTitle}</a>
+                </div>
+              </div>
+            </>
+          }
+
+
+
+          ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);          
+        </script>
+
+        <!-- 練習結束 -->
+      </main>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="../stylesheets/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="../javascripts/vendor.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .body {
+            background-color: #505050;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            width: 1000px;
+            height: 100%;
+            background-color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div>
+        <div id="root"></div>
+        <script type="text/babel">
+            function App() {
+                return (
+                    <div className='content' >
+                        <h1 style={{ fontSize: '30px', fontWeight: '800', padding: '10px 20px' }}>[4Foodie] 在地人帶路 香港美食特輯</h1>
+                        <p style={{ padding: '20px' }}>香港，以其豐富的飲食文化和獨特的港味吸引著無數食客。在「72小時吃遍香港」專欄中，帶你一步步探訪香港各處的美食地圖，最在地的港味情報一次分享。<br /><br />
+
+                            本篇邀請台灣知名美食創作團隊，擁有63萬粉絲的 4Foodie，搭擋香港朋友領路，帶著讀者深入發掘香港的在地美食寶藏。從早餐到晚餐、從鹹點到甜點，讓我們一起在72小時內吃爆香港！</p>
+                        <div style={{
+                            width: '1000px',
+                            height: '500px',
+                            backgroundImage: 'url("https://today-obs.line-scdn.net/0hYEpsGyPrBmpNChaw9J95PR9cBQV-ZhVpKTxXXjMLEyVjRRtUOgsTcx1TAQo7URpHLhBBXDd6WyE_WklXAwdJbQ19BTI_RUFUFAsKcx11GCYVSh1sFG0P/w1200")',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center'
+                        }} ></div>
+
+                        <h2 style={{ fontSize: '20px', fontWeight: '600', margin: '30px' }}>【第一盤】新興食家</h2>
+                        <p style={{ padding: '20px' }}>
+                            地址：香港西環士美菲路8號美暉大廈地下
+                            <br />
+                            <br />
+                            推著點心推車的經典的早茶店，點了叉燒包、燒賣和腸粉。叉燒包鹹甜適中，外皮鬆軟而不黏，內餡還吃得到叉燒肉塊。燒賣內包有蝦子和整顆鵪鶉蛋，皮薄而滑。腸粉的皮較厚，口感像粄條，搭配脆彈的蝦子和鹹香醬汁，醬汁鹹度大於甜！</p>
+                        <div style={{
+                            width: '1000px',
+                            height: '500px',
+                            backgroundImage: 'url("https://today-obs.line-scdn.net/0hUWe3THVYCnhYShqi4cl1LwQcCRdrJhl7PHxbTCZLETR3HQ19AnZETAQpCB0QIE5RBkcOfxsLEjctEUxPAkwZSxhLHSMTAQZ7AlMfYRs2HxgDKAtVOHZNYg0/w1200")',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center'
+                        }} ></div>
+                    </div>
+                )
+            }
+            ReactDOM
+                .createRoot(document.getElementById('root'))
+                .render(<App />);
+        </script>
+    </div>
+
+    <link rel="stylesheet" href="../stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
