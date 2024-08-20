@@ -5,13 +5,21 @@
   <title>版型建立</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <script src="./js/vendor.js"></script>
+  <!-- bootstap -->
+  <script src="/版型與元件製作ex/版型與元件製作ex/js/vendor.js"></script>
+  <link rel="stylesheet" href="/版型與元件製作ex/版型與元件製作ex/css/all.css">
+  <link rel="stylesheet" href="/版型與元件製作ex/版型與元件製作ex/css/all.css.map">
+
+
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
     integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+  <!-- 自己撰寫的CSS -->
+  <!-- 自己撰寫的JS -->
 </head>
 
 <body class="bg-lighter">
@@ -24,10 +32,53 @@
         </div>
 
         <div id="root"></div>
-        <script type="text/babel">          
+        <script type="text/babel">
+
+
+          function Card(props) {
+            // 資料解構:把物件或陣列內容提出來給指定變數(必須是被解構的來源是元件的屬性名稱)
+            const { title, price, desc, btnName } = props;
+
+            return (
+              <div className="card mb-4">
+                <div className="card-header">
+
+                  {/*<h4 className="my-0">{props.title}</h4>*/}
+                  <h4 className="my-0">{title}</h4>
+                
+                  </div>
+                <div className="card-body">
+
+                  {/*三元運算子*/}
+                  {/*條件式 ? 條件成立 : 條件不成立 */}
+                  {/*<h1 className="card-title">{props.price}<small>月</small></h1>*/}
+                  {/*<h1 className="card-title">{typeof props.price === 'number' ? <>${props.price}<small>月</small></> : props.price}</h1>*/}
+                  <h1 className="card-title">{typeof price === 'number' ? <>${price}<small>月</small></> : price}</h1>
+
+                  {/*<p>{props.desc}</p>*/}
+                  <p>{desc}</p>
+
+                  {/*<button type="button" className="btn btn-outline-primary">{props.btnName}</button>*/}
+                  <button type="button" className="btn btn-outline-primary">{btnName}</button>
+                </div>
+              </div>
+            )
+          }
+
           const App = () => {
             return (
               <>
+                <h2>租用方案</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore molestiae
+                  facere asperiores sit aspernatur laboriosam ipsum, excepturi fuga,
+                  consequuntur cupiditate, nam a doloremque error adipisci nulla reiciendis
+                  itaque odio voluptatibus.
+                </p>
+                {/*呼叫卡片元件*/}
+                <Card title='基本版' price={1000} desc='基本版說明區' btnName='免費試用' />
+                <Card title='進階版' price={6000} desc='進階版說明區' btnName='進階版申請' />
+                <Card title='企業版' price='請洽客服' desc='多人適用。。。' btnName='企業版申請' />
               </>
             );
           };
@@ -81,8 +132,7 @@
 
     </div>
   </div>
-  <link rel="stylesheet" href="./css/all.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 </body>
 
 </html>

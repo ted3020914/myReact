@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>版型建立</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <!-- bootstap -->
+    <script src="/版型與元件製作ex/版型與元件製作ex/js/vendor.js"></script>
+    <link rel="stylesheet" href="/版型與元件製作ex/版型與元件製作ex/css/all.css">
+    <link rel="stylesheet" href="/版型與元件製作ex/版型與元件製作ex/css/all.css.map">
+
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+    integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <!-- 自己撰寫的CSS -->
+    <!-- 自己撰寫的JS -->
+</head>
+
+<body class="bg-lighter">
+    <div class="container main my-5">
+        <div class="row">
+            <main class="col post">
+                <div class="mb-4">
+                    <h1 class="mt-0 text-muted">版型建立</h1>
+                    <small>檔名：<code>01-createLayout.html</code></small>
+                </div>
+
+                <div id="root"></div>
+                <script type="text/babel">
+
+
+                    function Card(props) {
+                        // 資料解構:把物件或陣列內容提出來給指定變數(必須是被解構的來源是元件的屬性名稱)
+                        const { title, price, desc, btnName } = props;
+
+                        return (
+                            <div className="card mb-4">
+                                <div className="card-header">
+
+                                    {/*<h4 className="my-0">{props.title}</h4>(無解構版)*/}
+                                    <h4 className="my-0">{title}</h4>
+
+                                </div>
+                                <div className="card-body">
+
+                                    {/*三元運算子*/}
+                                    {/*條件式 ? 條件成立 : 條件不成立 */}
+                                    {/*<h1 className="card-title">{props.price}<small>月</small></h1>*/}
+                                    {/*<h1 className="card-title">{typeof props.price === 'number' ? <>${props.price}<small>月</small></> : props.price}</h1>*/}
+                                    <h1 className="card-title">{typeof price === 'number' ? <>${price}<small>/月</small></> : price}</h1>
+
+                                    {/*<p>{props.desc}</p>*/}
+                                    <p>{desc}</p>
+
+                                    {/*<button type="button" className="btn btn-outline-primary">{props.btnName}</button>*/}
+                                    <button type="button" className="btn btn-outline-primary">{btnName}</button>
+                                </div>
+                            </div>
+                        )
+                    }
+
+                    const App = () => {
+                        // 建立陣列物件資料
+                        const products = [
+                            {
+                                id: 1,       //跑迴圈時，需要一個資料不會重複的key值
+                                title: '基本版',
+                                price: 1000,
+                                desc: '基本版說明區',
+                                btnName: '免費試用'
+                            },
+                            {
+                                id: 2,
+                                title: '進階版',
+                                price: 6000,
+                                desc: '進階版說明區',
+                                btnName: '進階版申請'
+                            },
+                            {
+                                id: 3,
+                                title: '專業版',
+                                price: 10000,
+                                desc: '專業版說明區',
+                                btnName: '專業版申請'
+                            },
+                            {
+                                id: 4,
+                                title: '企業版',
+                                price: '請洽客服',
+                                desc: '多人適用。。。',
+                                btnName: '企業版申請'
+                            }
+                        ]
+
+
+                        return (
+                            <>
+                                <h2>方案使用說明</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore molestiae
+                                    facere asperiores sit aspernatur laboriosam ipsum, excepturi fuga,
+                                    consequuntur cupiditate, nam a doloremque error adipisci nulla reiciendis
+                                    itaque odio voluptatibus.
+                                </p>
+
+
+                                {/*使用迴圈，將陣列物件資料填入*/}
+                                {/*在輸出(return)時使用JS的話，要加上{}*/}
+                                {
+                                    products.map((item) => {
+                                        // 呼叫卡片元件
+                                        // return <Card title='基本版' price={1000} desc='基本版說明區' btnName='免費試用' />
+                                        // 改用陣列傳值給元件
+                                        return <Card title={item.title} price={item.price} desc={item.desc} btnName={item.btnName} />
+                                    })
+                                }
+
+                                {/* 元件仍可單獨使用定義 */}
+                                <Card title='專人解說' price='請聯絡客服' desc='專人解說文字區' btnName='專人服務' />
+                            </>
+                        );
+                    };
+
+                    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+                </script>
+
+                <hr>
+                <div>
+                    <h2>租用方案</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore molestiae
+                        facere asperiores sit aspernatur laboriosam ipsum, excepturi fuga,
+                        consequuntur cupiditate, nam a doloremque error adipisci nulla reiciendis
+                        itaque odio voluptatibus.
+                    </p>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="my-0">基本版</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title">$1000<small>/月</small></h1>
+                            <p>基本版說明區</p>
+                            <button type="button" class="btn btn-outline-primary">免費試用</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="my-0">進階版</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title">$6000<small>月</small></h1>
+                            <p>進階版說明區</p>
+                            <button type="button" class="btn btn-outline-primary">進階版申請</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="my-0">企業版</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title">請洽客服<small></small></h1>
+                            <p>多人適用。。。</p>
+                            <button type="button" class="btn btn-outline-primary">
+                                企業版申請
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

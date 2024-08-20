@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="/版型與元件製作ex/版型與元件製作ex/js/vendor.js"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -23,8 +24,10 @@
             // 元件結束後必須要有回傳值
             return (
                 <img title={props.title} src={props.imgUrl} alt="" style={{
-                    width: '300px',
-                    magrin: '20px'
+                    width: props.width,
+                    magrin: '20x',
+                    padding: '20px',
+                    border: props.border
                 }} />
             )
 
@@ -37,8 +40,8 @@
                     <h2>呼叫圖片元件</h2>
                     {/*使用自訂屬性名稱，傳值給元件*/}
                     {/*元件使用props接收*/}
-                    <GetImg imgUrl='https://images.unsplash.com/photo-1724010930544-59b11726a226?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' title='圖一'/>
-                    <GetImg imgUrl='https://images.unsplash.com/photo-1723883973373-810a6a521342?q=80&w=1905&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' title='圖二'/>
+                    <GetImg imgUrl='https://images.unsplash.com/photo-1724010930544-59b11726a226?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' title='圖一' width='300px' border='5px solid #555' />
+                    <GetImg imgUrl='https://images.unsplash.com/photo-1723883973373-810a6a521342?q=80&w=1905&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' title='圖二' width='150px' border='7px dashed #555'/>
 
                     {/*沒有元件化的圖片:有N張圖，就要重工N次*/}
                 </div>
@@ -49,5 +52,6 @@
             .render(<App />);
     </script>
 </body>
-
+<link rel="stylesheet" href="/版型與元件製作ex/版型與元件製作ex/css/all.css">
+<link rel="stylesheet" href="/版型與元件製作ex/版型與元件製作ex/css/all.css.map">
 </html>
