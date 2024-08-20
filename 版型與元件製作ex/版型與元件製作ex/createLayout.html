@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>版型建立</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <script src="./js/vendor.js"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+    integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="bg-lighter">
+  <div class="container main my-5">
+    <div class="row">
+      <main class="col post">
+        <div class="mb-4">
+          <h1 class="mt-0 text-muted">版型建立</h1>
+          <small>檔名：<code>01-createLayout.html</code></small>
+        </div>
+
+        <div id="root"></div>
+        <script type="text/babel">          
+          const App = () => {
+            return (
+              <>
+              </>
+            );
+          };
+
+          ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        </script>
+
+        <hr>
+        <div>
+          <h2>租用方案</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore molestiae
+            facere asperiores sit aspernatur laboriosam ipsum, excepturi fuga,
+            consequuntur cupiditate, nam a doloremque error adipisci nulla reiciendis
+            itaque odio voluptatibus.
+          </p>
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4 class="my-0">基本版</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title">$1000<small>/月</small></h1>
+              <p>基本版說明區</p>
+              <button type="button" class="btn btn-outline-primary">免費試用</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4 class="my-0">進階版</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title">$6000<small>月</small></h1>
+              <p>進階版說明區</p>
+              <button type="button" class="btn btn-outline-primary">進階版申請</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4 class="my-0">企業版</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title">請洽客服<small></small></h1>
+              <p>多人適用。。。</p>
+              <button type="button" class="btn btn-outline-primary">
+                企業版申請
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+  <link rel="stylesheet" href="./css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
