@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 1.建立useState
+        const { useState } = React;
+
+        function App() {
+
+            // 3.state 是ReadOnly(唯讀)
+            // 為了讓React知道資料已更新，所以會用另一個方法告知
+            const [num, setNum] = useState(1);
+
+            // 陣列
+            const [arr, setArr] = useState([1, 2, 3]);
+
+            function removeArrData() {
+                // React
+                // 找到最後一個位置刪除
+                setArr(arr.filter((item, index) => index !== arr.length - 1));
+            }
+
+            function addArrData() {
+                // 新增內容到陣列
+                setArr([...arr, arr.length + 1]);
+            }
+
+            return (
+                <div>
+                    <button onClick={() => setNum(num + 1)}>+</button>{num}
+
+                    <button onClick={() => setNum(num - 1)}>-</button>{num}
+                    <hr />
+                    {/*讀取陣列資料給li*/}
+                    <ul>
+                        {
+                            arr.map((item, index) => {
+                                return (
+                                    <li key={index}>{item}</li>
+                                )
+                            })
+                        }
+                    </ul>
+
+                    <button onClick={addArrData}>新增陣列資料</button>
+
+                    <button onClick={removeArrData}>移除陣列資料</button>
+                </div>
+            );
+        }
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+
+</body>
+
+</html>

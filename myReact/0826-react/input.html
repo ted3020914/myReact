@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="input">
+
+    <!-- 原生JS -->
+    <script>
+        // change事件
+        // 取得文字方塊
+        let input = document.getElementById('input');
+
+        input.addEventListener('change', (e) => {
+            // console.log('change事件被觸發了');
+            console.log('change事件' + e.target.value);
+        })
+        // keyup事件
+        input.addEventListener('keyup', (e) => {
+            // console.log('keyup事件被觸發了');
+            console.log('keyup事件' + e.target.value);
+        })
+
+    </script>
+    <hr>
+
+    <h2>React</h2>
+
+    <!-- React -->
+    <!-- input綁定useState -->
+    <div id="root"></div>
+    <script type="text/babel">
+        // 從React解構出useState方法
+        const { useState } = React;
+        function App() {
+            // 定義狀態
+            const [text, setText] = useState('');
+            return (
+                <div>
+                    {/*React環境下不可直接用value，使用defaultValue*/}
+                    {/*React環境下不可直接用value，要搭配onChange事件*/}
+                    <input type="text" id="inputReact" value={text}
+                        onChange={(e) => {
+                            // console.log(e.target.value);
+                            setText(e.target.value);
+                        }}
+                        // 失去焦點(游標)
+                        onBlur={() => {
+                            console.log('onBlur');
+                            console.log(text);
+                        }}
+                        // 取得焦點(游標)
+                        onFocus={() => {
+                            console.log('onFocus');
+                        }}
+                    />
+                    {/*顯示文字方塊內容*/}
+                    {text}
+                </div>
+
+            )
+        }
+
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+</body>
+
+</html>
