@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>useEffect 基礎介紹</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="./javascripts/vendor.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body class="bg-lighter">
+    <div class="container main my-5">
+        <div class="row">
+            <main class="col post">
+                <!-- 章節標題 -->
+                <div class="mb-4">
+                    <h1 class="mt-0 text-muted">useEffect 基礎介紹</h1><small>檔名：<code>04.html</code></small>
+                </div>
+
+                <div id="root"></div>
+                <!-- 存取非同步資料的套件 => axios -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+
+                <script type="text/babel">
+                    const { useState, useEffect } = React;
+
+
+
+
+                    const App = () => {
+                        const [jsonData, setJsonData] = useState([]);
+                        // 取出本地端json氣象資料，顯示在console中
+                        const getWeatherData = async () => {
+
+                            const result = await axios.get('./F-C0032-001.json');
+                            // console.log(result);
+
+                            // 取出各縣市資訊=>方法1(一般變數)
+                            // console.log(result.data.cwaopendata.dataset.location)
+                            // const location = result.data.cwaopendata.dataset.location;
+
+                            // 取出各縣市資訊=>方法2(解構方法)
+                            // 大括號直接取dataset裡的元素
+                            const { location } = result.data.cwaopendata.dataset;
+                            // console.log(location);
+                            setJsonData(location);
+                        }
+                        getWeatherData();
+
+
+                        return (
+                            <>
+                                {/*顯示到畫面的內容*/}
+                                <h2>各縣市名稱</h2>
+
+                                <ul>
+                                    {
+                                        jsonData.map((city) => {
+                                            return (
+                                                <li key={city.locationName}>{city.locationName}</li>
+                                            )
+
+                                        })
+
+                                    }</ul>
+
+
+
+                                {/*<div className='row row-cols-2 g-4'>
+                                    {
+                                        jsonData.map((city) => {
+                                            return (
+                                                <div className='col' key={city.location}>{city.locationName}
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>*/}
+
+                            </>
+                        )
+                    }
+
+                    ReactDOM
+                        .createRoot(document.querySelector('#root'))
+                        .render(<App />)
+                </script>
+            </main>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="./stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
