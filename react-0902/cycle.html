@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        img {
+            width: 500px;
+            height: 400px;
+        }
+        .box{
+            width: 500px;
+            height: 400px;
+            position: relative;
+        }
+        /* 輪播導覽列 */
+        #nav{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 99;
+        }
+        #nav a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 20px;
+
+        }
+        #nav a.activeSlide{
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+
+
+
+
+        function App() {
+            useEffect(() => {
+                // 撰寫jQuery
+                // jQuery環境簡寫
+                $(function () {
+                    $('#imgCycle').after('<div id="nav"></div>').cycle({
+                        fx: 'turnLLeft',     //輪播方式
+                        timeout: 500,     //輪播速度
+                        delay: -4000,     //第一次的第一張圖停留時間
+                        pager:'#nav',     //執行已建立好的CSS樣式  
+                    });
+                });
+            }, []);
+            return (
+                <div>
+                    <h1>自動輪播+輪播鈕</h1>
+                    <div class="box">
+                        <div id="imgCycle">
+                            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://images.unsplash.com/photo-1490885578174-acda8905c2c6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://images.unsplash.com/photo-1543363136-314062964bef?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGZydWl0fGVufDB8fDB8fHww" alt="" />
+                        </div>
+                        {/*<nav>輪播導覽列</nav>*/}
+                    </div>
+
+                </div>
+            )
+
+        }
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+    <!-- 輪播效果主程式 -->
+    <script src="./jQuery/js/jquery.cycle.all.js"></script>
+
+</body>
+
+</html>

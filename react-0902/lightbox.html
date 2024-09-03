@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 燈箱效果css -->
+    <link rel="stylesheet" href="./jQuery/lightbox/css/lightbox.css">
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function App() {
+
+            return (
+                <div>
+                    <h1>lightbox</h1>
+                    <a href="https://images.unsplash.com/photo-1725261353746-fdb0052adc46?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-lightbox="group" data-title="香蕉你個芭樂">
+                        <img src="https://images.unsplash.com/photo-1725261353746-fdb0052adc46?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" /></a>
+                    <a href="https://images.unsplash.com/photo-1421494756418-72f0f89c6bfd?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-lightbox="group" data-title="香蕉你個芭樂">
+                        <img src="https://images.unsplash.com/photo-1421494756418-72f0f89c6bfd?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" /></a>
+                    <a href="https://images.unsplash.com/photo-1463123081488-789f998ac9c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-lightbox="group" data-title="香蕉你個芭樂">
+                        <img src="https://images.unsplash.com/photo-1463123081488-789f998ac9c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" /></a>
+
+                </div>
+            )
+
+        }
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+    <!-- 燈箱效果js -->
+    <script src="./jQuery/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>
