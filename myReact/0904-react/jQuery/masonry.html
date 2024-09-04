@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            /* 因應左右留白平均分配 */
+            margin: auto;
+        }
+
+        .box {
+            width: 300px;
+        }
+
+        .box img {
+            width: 100%;
+            vertical-align: bottom;
+            /*取消圖片下方預設留白*/
+        }
+    </style>
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+                // 撰寫jQuery
+                $(function () {
+                    $('#container').imagesLoaded(function () {
+                        $('#container').masonry({
+                            isFitWidth: true //若要左右留白平均(水平置中)，必須要最旺框container要margin:auto
+                        });
+                    });
+
+                });
+
+            }, []);
+
+            return (
+                <div>
+                    <h1>瀑布流主程式</h1>
+                    <div id="container">
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                        <div class="box">
+                            <img src="https://images.unsplash.com/photo-1725053773231-4f4353debe07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" alt="" /></div>
+                    </div>
+
+
+
+                </div>
+            )
+        }
+
+
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- 載入圖片主程式 -->
+    <script src="./js/imagesloaded.pkgd.min.js"></script>
+    <!-- 瀑布流主程式 -->
+    <script src="./js/masonry.pkgd.min.js"></script>
+</body>
+
+</html>

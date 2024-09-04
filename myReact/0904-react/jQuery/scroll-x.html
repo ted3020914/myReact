@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            width: 100%;
+            height: 45px;
+            background-color: #333;
+            text-align: center;
+            line-height: 45px;
+            position: fixed;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+        }
+
+        #container {
+            width: 960px;
+            height: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        section {
+            width: 960px;
+            height: 600px;
+            /* float: left; */
+        }
+
+        #m1 {
+            background-color: #ca7777;
+        }
+
+        #m2 {
+            background-color: hsl(78, 37%, 55%);
+        }
+
+        #m3 {
+            background-color: hsl(194, 32%, 46%);
+        }
+
+        
+        #wrapper {
+            /* 總寬度要 > 所有內容物的寬度 */
+            /* width: 3000px; */
+            /* 總高度要 > 所有內容物的寬度 */
+            height: 2000px;
+        }
+    </style>
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+                // 撰寫jQuery
+                $(function () {
+                    $('nav').localScroll({
+                        target: '#container',
+                        axis: 'y',
+                        duration: 800,
+                    });
+                });
+
+            }, []);
+
+            return (
+                <div>
+                    <h1>水平滑動效果</h1>
+
+                    <nav>
+                        <a href="#m1">menu1</a>
+                        <a href="#m2">menu2</a>
+                        <a href="#m3">menu3</a>
+                    </nav>
+
+                    <div id="container">
+                        <div id="wrapper">
+                            <section id="m1" ></section>
+                            <section id="m2"></section>
+                            <section id="m3"></section>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- 滑動主程式 -->
+    <script src="./js/jquery.scrollTo.min.js"></script>
+    <script src="./js/jquery.localScroll.min.js"></script>
+
+</body>
+
+</html>
