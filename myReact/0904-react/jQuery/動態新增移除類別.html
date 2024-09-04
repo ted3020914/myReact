@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .box1 {
+            display: block;
+            background-color: #ccc;
+            width: 150px;
+            text-align: center;
+            padding: 15px 0;
+            transition: all .5s linear;
+            margin: 50px;
+        }
+
+        .box2 {
+            width: 150px;
+            display: block;
+            overflow: hidden;
+            margin: 50px;
+        }
+
+        .box2 img {
+            width: 100%;
+            vertical-align: bottom;
+            transition: all 1s;
+        }
+        .imgScale img{
+            transform: scale(2);
+        }
+
+
+        /* 背景變色 */
+        .bgColor {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+                // 撰寫jQuery
+                $(function () {
+                    // 新增類別方法:addClass()
+                    $('#cssAnim').hover(function () {
+                        $(this).addClass('bgColor');
+                    }, function () {
+                        // 刪除類別方法:removeClass()
+                        $(this).removeClass('bgColor');
+                    });
+                    // 圖片縮放
+                    $('#css2').hover(function(){
+                        $(this).addClass('imgScale')
+                    },function(){
+                        $(this).removeClass('imgScale')
+                    });
+
+                });
+            }, []);
+
+            return (
+                <div>
+                    <h1>動態新增刪除類別</h1>
+                    <a href="" className='box1' id='cssAnim'>背景變色</a>
+                    <a href="" className='box2' id='css2'>
+                        <img src="https://images.unsplash.com/photo-1724963335855-93f74796d4bc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </a>
+
+
+
+                </div>
+            )
+        }
+
+
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./js/jquery-1.11.3.min.js"></script>
+
+
+</body>
+
+</html>

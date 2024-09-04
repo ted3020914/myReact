@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .fadeBtn {
+            display: block;
+            width: 200px;
+            height: 80px;
+            background-color: #ddd;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 3px #555;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+                // 撰寫jQuery
+                $(function () {
+                    $('.fadeBtn').hover(function () {
+                        // 滑鼠移入時淡出且放大文字
+                        $(this).animate({ opacity: '0.5', fontSize: '24px' }, 300);
+                        // 滑鼠離開時淡入且還原文字大小
+                    }, function () {
+                        $(this).animate({ opacity: '1', fontSize: '20px' }, 300);
+                    });
+                });
+            }, []);
+
+            return (
+                <div>
+                    <h1>animate方法</h1>
+                    <a href="#" className='fadeBtn'>按鈕</a>
+
+
+                </div>
+            )
+        }
+
+
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./js/jquery-1.11.3.min.js"></script>
+
+
+</body>
+
+</html>

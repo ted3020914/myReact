@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- React babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        #wrapper {
+            width: 960px;
+            margin: 50px auto;
+        }
+
+        p {
+            text-align: justify;
+
+        }
+
+        a {
+            color: red;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .ttpShow {
+            display: none;
+        }
+
+        #ttpPanel {
+            border: 3px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            background-color: white;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+        function App() {
+            useEffect(() => {
+                // 撰寫jQuery
+                $(function () {
+                    // 滑鼠事件
+                    // 移入 => mouseover()
+                    // 移動 => mousemove()
+                    // 移出 => mouseout()
+
+                    // 座標X => pageX
+                    // 座標Y => pageY
+
+                    // 淡入 => fadeIn()
+                    // 淡出 => fadeOut()
+                    // 速度 => 可以使用秒數或者參數(slow,normal,fast)
+                    // 傳回被找到的資訊 => has()
+
+                    $('a:has(.ttpShow)').mouseover(function (e) {
+                        // 滑鼠碰到超連結時
+                        $('body').append('<div id="ttpPanel">' + $(this).children('.ttpShow').html() + '</div>');
+                        $('#ttpPanel').css({
+                            top: (e.pageY + 10) + 'px',
+                            left: (e.pageX + 10) + 'px'
+                        }).fadeIn('fast');
+                    }).mousemove(function (e) {
+                        // 滑鼠在超連結移動時
+                        $('#ttpPanel').css({
+                            top: (e.pageY + 10) + 'px',
+                            left: (e.pageX + 10) + 'px'
+                        }).fadeIn('fast');
+                    }).mouseout(function (e) {
+                        // 滑鼠離開超連結時
+                        $('#ttpPanel').remove();
+                    });
+
+
+
+                    // $('a:has(.ttpShow)').mousemove(function (e) {
+                    //     // 滑鼠在超連結移動時
+                    //     $('.ttpShow').css({
+                    //         top: (e.pageY) + 'px',
+                    //         left: (e.pageX) + 'px'
+                    //     }).fadeIn('fast');
+                    // });
+
+                    // $('a:has(.ttpShow)').mouseout(function (e) {
+                    //     // 滑鼠離開超連結時
+                    //     $('.ttpShow').fadeOut('fast');
+                    // });
+
+                });
+            }, []);
+
+            return (
+                <div>
+                    <div id="wrapper">
+                        <h1>toolTip效果</h1>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui veritatis facilis <a href="#">voluptatibus<span className='ttpShow'>voluptatibus</span></a>iusto explicabo, quae nam! Voluptatibus soluta quo distinctio, repellat cumque veniam sed similique animi dolore ipsam, voluptatum, ut eius temporibus et beatae exercitationem? Incidunt totam vitae officia quidem ipsam, dolorum voluptates facere ab quod voluptate alias sunt itaque quasi illum! Libero nobis minus error dicta sit, blanditiis doloribus? Expedita tempora suscipit odio rem minima nisi accusamus amet aliquam vitae ratione iusto aperiam inventore ut alias sit reiciendis, necessitatibus laboriosam at, recusandae veritatis nam cupiditate deleniti! Sit, fugit! Error porro<a href="#">voluptatibusg說明<span className='ttpShow'>voluptatibusg說明</span></a> esse sapiente nulla officia earum, ad iusto libero mollitia. Et!</p>
+                    </div>
+
+
+                </div>
+            )
+        }
+
+
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./js/jquery-1.11.3.min.js"></script>
+
+
+</body>
+
+</html>
