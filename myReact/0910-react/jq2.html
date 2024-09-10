@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <!-- React babel -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <style>
+            #wrapper {
+                width: 800px;
+                margin: 0 auto;
+                text-align: justify;
+                padding: 50px 0;
+            }
+
+            .btnArea a {
+                color: red;
+                text-decoration: none;
+            }
+
+            p {
+                line-height: 1.5;
+            }
+
+            /* 隱藏彈出視窗的內容 */
+            #modalContent {
+                display: none;
+            }
+
+            /* 遮罩元素 */
+        </style>
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            const { useEffect } = React;
+            function App() {
+                useEffect(() => {
+                    // 撰寫jQUERY
+                    $(function () {
+                        /*
+                        //動態生成下方的元素
+                        //遮罩元素
+                        <div id="mdOverlay">
+                        //彈跳視窗
+                        <div id="mdWindow">
+                        //關閉鈕
+                        <div className="mdClose">
+                        </div>
+                        //被隱藏的內容
+                        <div id="contWrap"></div>
+                        </div>
+                        </div>
+                        */
+
+                        // 取得彈出視窗按鈕
+                        let modalBtn = $('.modalBtn');
+                        // 遮罩背景透明度
+                        let overlayOpacity = 0.7;
+                        // jQuery監聽事件寫法
+                        modalBtn.on('click', function (e) {
+                            //取消預設動作
+                            e.preventDefault();
+                            // 取得超連結
+                            let setMdw = $(this);
+                            // 取得超連結的href屬性
+                            let setHref = setMdw.addr('href');
+                            // 取得href對應id的內容
+                            let setSourse = $(setHref).html();
+                            // 取得視窗高度
+                            let curHeight = $(window).height();
+
+                            $('body').append('<div id="mdOverlay"></div><div id="mdWindow"><div className="mdClose"></div><div id="contWrap">內容</div></div>');
+
+                            $('#mdOverlay,#mdWindow').css({display:'block',opacity:'0'});
+                            $('#mdOverlay').css({height:curHeight});
+
+
+
+
+
+
+                        });
+
+
+
+                    });
+                }, []);
+
+                return (
+                    <div id="wrapper">
+                        <div class="btnArea" >
+                            <a href="#modalContent" className="modalBtn">彈跳視窗</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, et commodi ipsa cupiditate placeat saepe nam optio officia assumenda eos architecto temporibus sed facere voluptates facilis. Officia nobis, repellat nostrum obcaecati, nihil vero molestias necessitatibus ullam culpa soluta voluptatem illum tempora. Laboriosam perspiciatis reprehenderit at deserunt minima distinctio architecto quisquam unde repellendus in, accusantium harum totam cupiditate facere nihil dolor, hic magnam officiis itaque aliquid quaerat, quas maxime qui ratione. Perspiciatis aspernatur sunt dolorem dolorum hic recusandae animi molestiae at facilis molestias, quo corporis pariatur, a aperiam, voluptas nam non voluptatibus tempore! Tempore voluptates repellat voluptate sed doloribus quae magni!</p>
+                        <div id="modalContent">
+                            <h2>彈出視窗標題</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, et commodi ipsa cupiditate placeat saepe nam optio officia assumenda eos architecto temporibus sed facere voluptates facilis. Officia nobis, repellat nostrum obcaecati, nihil vero molestias necessitatibus ullam culpa soluta voluptatem illum tempora. Laboriosam perspiciatis reprehenderit at deserunt minima distinctio architecto quisquam unde repellendus in, accusantium harum totam cupiditate facere nihil dolor, hic magnam officiis itaque aliquid quaerat, quas maxime qui ratione. Perspiciatis aspernatur sunt dolorem dolorum hic recusandae animi molestiae at facilis molestias, quo corporis pariatur, a aperiam, voluptas nam non voluptatibus tempore! Tempore voluptates repellat voluptate sed doloribus quae magni!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, et commodi ipsa cupiditate placeat saepe nam optio officia assumenda eos architecto temporibus sed facere voluptates facilis. Officia nobis, repellat nostrum obcaecati, nihil vero molestias necessitatibus ullam culpa soluta voluptatem illum tempora. Laboriosam perspiciatis reprehenderit at deserunt minima distinctio architecto quisquam unde repellendus in, accusantium harum totam cupiditate facere nihil dolor, hic magnam officiis itaque aliquid quaerat, quas maxime qui ratione. Perspiciatis aspernatur sunt dolorem dolorum hic recusandae animi molestiae at facilis molestias, quo corporis pariatur, a aperiam, voluptas nam non voluptatibus tempore! Tempore voluptates repellat voluptate sed doloribus quae magni!</p>
+
+                        </div>
+
+
+                    </div>
+                )
+            }
+
+
+
+
+            ReactDOM
+                .createRoot(document.getElementById('root'))
+                .render(<App />);
+        </script>
+        <!--jQuery主程式 -->
+        <script src="./js/jquery-1.11.3.min.js"></script>
+
+
+    </body>
+
+    </html>
+</body>
+
+</html>
