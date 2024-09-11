@@ -1,0 +1,33 @@
+// font
+$font-family: "Microsoft JhengHei",PMingLiU,MingLiu,"Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+$font-size: 16px;
+
+// gutter
+$gutter: 15px;
+
+// color
+$background-color: #fcfbf5;
+$font-color: #333;
+$font-color-gray: lighten($font-color, 55%);
+
+$brand-primary: #039dff;
+$brand-success: #00CC99;
+$brand-accent: #e26789;
+$brand-dark: $font-color;
+$brand-facebook: #4080ff;
+
+// navbar
+$navbar-height: 42px;
+
+// progress
+$progress-height: 20px;
+
+// section
+$section-gutter: 45px;
+
+// zindex
+$navbar-zindex: 1000;
+$fab-zindex: 1045;
+
+// breakpoint
+$mobile-size: 779px;
