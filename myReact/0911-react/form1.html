@@ -27,6 +27,11 @@
             const arrCity = ['北', '中', '南', '東'];
             const [selCity, setSelCity] = useState('');
 
+            // #3複選的下拉清單
+            const arrCity2 = ['北', '中', '南', '東'];
+            const [selCity2, setSelCity2] = useState([]);
+
+
             return (
                 <div>
                     {/*#1 input*/}
@@ -49,6 +54,27 @@
                             })
                         }
                     </select>-{selCity}
+
+                    <hr />
+                    {/*#3  複選下拉清單 select*/}
+                    <select name="" id="" multiple size="6"
+                    value={selCity2}
+                    onChange={(e)=>{
+                        // console.dir(e);
+                        // console.log(e.target.selectedOptions[0].value);
+                        // console.log([...e.target.selectedOptions].map((op)=>op.value));
+                        setSelCity2([...e.target.selectedOptions].map((op)=>op.value))
+
+                    }}
+                    >
+                        <option value="" disabled>請選擇</option>
+                        {
+                            // 使用map()，要有key值
+                            arrCity2.map((city) => {
+                                return <option value={city} key={city}>{city}</option>
+                            })
+                        }
+                    </select>-{selCity2}
 
                 </div>
             )

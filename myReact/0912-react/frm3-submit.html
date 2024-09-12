@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function App() {
+            // const { userid, setUserid } = useState('');
+            const { username, setUsername } = useState('');
+
+            // 同時處理不同欄位的資料
+            const [formData, setFormData] = useState({
+                userid:'9527'
+
+            });
+
+            // 送出鈕的函式
+            const handleSubmit = (e) => {
+                // 取消html預設行為
+                e.preventDefault();
+                // console.dir(e);
+
+                console.log(formData);
+            }
+
+            // 文字方塊異動時的函式
+            // const handleChange=(e)=>{
+            //     setUserid(e.target.value);
+            // }
+            const handleInputChange = (e) => {
+                // 取name屬性名稱
+                const curName = e.target.nanme;
+                // 取值
+                const curValue = e.target.value;
+                setFormData({
+                    ...formData,
+                    [curName]:curValue //使用變數的方式帶入屬性
+                })
+            }
+
+
+            // JSX寫法
+            return (
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        {/*<label htmlFor="uid">帳號{userid}</label>
+                        <input type="text" id="uid" onChange={handleChange} name='uid'/>*/}
+                        <label htmlFor="uid">帳號{formData.userid}</label>
+                        <input type="text" id="uid" onChange={handleInputChange} value={formData.userid} name='userid' />
+
+                    </form>
+                </div>
+            )
+
+        }
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+</body>
+
+</html>
