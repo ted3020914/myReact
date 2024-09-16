@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>表單送出</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="./javascripts/vendor.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="bg-lighter">
+    <div class="container main my-5">
+        <div class="row">
+            <main class="col post">
+                <!-- 章節標題 -->
+                <div class="mb-4">
+                    <h1 class="mt-0 text-muted">表單送出</h1>
+                </div>
+                <div id="root"></div>
+                <script type="text/babel">
+                    const { useState } = React
+                    const App = () => {
+                        // 單一欄位處理資料缺點:要逐一處理每個欄位寫入的程式，顯得沒有管理效率
+                        // 使用者名稱
+                        // const [username, setUsername] = useState('');
+                        // // 取得使用者名稱內容異動的資料給 username
+                        // const handleChange = (e) => {
+                        //     setUsername(e.target.value);
+                        // }
+                        // 使用者密碼
+                        // const [password, setPassword] = useState('');
+                        // 取得使用者名稱內容異動的資料給 username
+                        // const handleChangePassword = (e) => {
+                        //     setPassword(e.target.value);
+                        // }
+
+
+                        // 同時處理不同欄位的資料(物件資料型態)
+                        // 物件中的屬性成員名稱，必須跟表單元素對應的name屬性名稱一樣
+                        const [formData, setFormData] = useState({
+                            username: 'admin',
+                            password: '1234',
+                            isCheck: false
+                        });
+
+                        // 統一管理所有發生change事件的狀態
+                        const handleInputChange = (e) => {
+                            // 值
+                            // console.log(e.target.value)
+                            //屬性
+                            // console.log(e.target.name)
+                            // 資料型態
+                            // console.log(e.target.type)
+
+
+                            // 元件內使用判斷式會出錯，要改用三元運算子
+                            const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+                            const name = e.target.name;
+
+                            setFormData({
+                                ...formData,
+                                [name]: value,    //使用[變數名稱]帶入屬性
+                            })
+                        }
+
+
+                        // 送出按鈕時，取得表單內容
+                        const handleSubmit = (e) => {
+                            // 取消html預設行為
+                            e.preventDefault();
+                            console.log(formData);
+                        }
+
+                        return (<div>
+                            <form onSubmit={handleSubmit}>
+                                <div className="mb-3">
+                                    <label htmlFor="username" className="form-label">使用者名稱{formData.username}</label>
+                                    <input id="username" type="text" className="form-control" name="username"
+                                        value={formData.username}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="password" className="form-label">密碼{formData.password}</label>
+                                    <input id="password" type="password" className="form-control" name="password"
+                                        value={formData.password}
+                                        onChange={handleInputChange} />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="isCheck">確認狀態{formData.isCheck.toString()}</label>
+                                    <input id="isCheck" type="checkbox" name="isCheck"
+                                        value={formData.isCheck}
+                                        onChange={handleInputChange} />
+                                </div>
+                                <button type="submit" className="btn btn-primary">送出</button>
+                            </form>
+                        </div>)
+                    }
+
+                    ReactDOM
+                        .createRoot(document.querySelector('#root'))
+                        .render(<App />)
+                </script>
+            </main>
+        </div>
+    </div>
+    <link rel="stylesheet" href="./stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
